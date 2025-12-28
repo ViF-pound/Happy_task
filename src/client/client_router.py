@@ -15,17 +15,17 @@ from src.client.websocket_connection import Connection
 client_router = APIRouter(prefix="/client", tags=["Client"])
 
 
-@client_router.websocket("get_task")
-async def websocket_endpoint(websocket: WebSocket, session: AsyncSession = Depends(get_session), user: User = Depends(get_current_user)):
+# @client_router.websocket("get_task")
+# async def websocket_endpoint(websocket: WebSocket, session: AsyncSession = Depends(get_session), user: User = Depends(get_current_user)):
 
-    await Connection.connect(websocket)
+#     await Connection.connect(websocket)
 
-    try:
-        while True:
-            
-            tasks = await session.scalars(select(Task).where(Task.user == user))
+#     try:
+#         while True:
 
-            return tasks.all()
+#             tasks = await session.scalars(select(Task).where(Task.user == user))
+
+#             return tasks.all()
 
 
 
